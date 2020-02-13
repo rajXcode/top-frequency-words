@@ -1,39 +1,41 @@
 package com.mf.techchallenge;
 
+import com.mf.techchallenge.utils.Constants;
+import org.apache.log4j.Logger;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
  * Represents top most occurring words, in descending order of the number of occurrences.
- *
  * @author rajender
  * @since 12/02/2020 - 6:32 PM
  */
 
 public class TopFrequencyWords {
 
-    private final String SPACE = " ";
     private final int topWordsLimit;
+    private static final Logger LOGGER = Logger.getLogger(TopFrequencyWords.class);
 
     /**
      * Parametrized constructor to set the top number of most occurring words in descending order
-     *
-     * @param topWordsLimit This is the number of top most occurring words
      */
-    public TopFrequencyWords(int topWordsLimit) {
-        this.topWordsLimit = topWordsLimit;
+    public TopFrequencyWords() {
+        this.topWordsLimit = Constants.topWordsLimit;
     }
 
     /**
      * This method takes the input string and return desired output
-     *
      * @param input This is the input string
      * @return Array of String having top most occurring words, in descending order of the number of occurrences.
      */
     String[] getWordsInDescendingOrderOfOccurrence(String input) {
 
+        LOGGER.debug("Inside getWordsInDescendingOrderOfOccurrence");
+
         if (input == null || input.isEmpty()) {
+            LOGGER.debug("Input is empty or null");
             return new String[0];
         }
 
@@ -43,6 +45,7 @@ public class TopFrequencyWords {
         //HashMap of all words in descending order value
         Map<String, Integer> hMapWords = calculateOccurrenceOfWordsInDescendingOrder(input);
 
+        LOGGER.debug("Returning desired output");
         return hMapWords.keySet().stream()
                 .limit(topWordsLimit)
                 .toArray(String[]::new);
@@ -50,33 +53,30 @@ public class TopFrequencyWords {
 
     /**
      * This method takes the input string and normalize string by removing break lines, tabs, special characters, etc.
-     *
      * @param inputText This is the string which has to be normalized
      * @return String This returns normalized string
      */
     String normalizeText(String inputText) {
 
-        final String REGEX_FOR_SPCL_CHAR = "[\n\r\t/.:,;\"]";
-        final String REGEX_FOR_MULTI_SPACE = " +";
-        final String EMPTY_STRING = "";
-
-        return inputText == null ? EMPTY_STRING :
+        LOGGER.debug("Normalizing the text -> " + inputText);
+        return inputText == null ? Constants.EMPTY_STRING :
                 inputText.toLowerCase()
-                        .replaceAll(REGEX_FOR_SPCL_CHAR, EMPTY_STRING)
-                        .replaceAll(REGEX_FOR_MULTI_SPACE, SPACE)
+                        .replaceAll(Constants.REGEX_FOR_SPCL_CHAR, Constants.EMPTY_STRING)
+                        .replaceAll(Constants.REGEX_FOR_MULTI_SPACE, Constants.SPACE)
                         .trim();
     }
 
     /**
      * This method takes the normalized string as an input and calculate occurrence of words in a string
-     *
      * @param normalizedString This is the normalized string
      * @return Map<String, Integer> which contains word with their occurrences as value in descending order
      */
     Map<String, Integer> calculateOccurrenceOfWordsInDescendingOrder(String normalizedString) {
 
+        LOGGER.debug("calculateOccurrenceOfWordsInDescendingOrder : Finding words with their occurrences in descending order");
+
         Map<String, Integer> hMapOfWordWithOccurrence = new HashMap<>();
-        String[] arrWords = normalizedString.split(SPACE);
+        String[] arrWords = normalizedString.split(Constants.SPACE);
 
         for (String word : arrWords) {
             if (hMapOfWordWithOccurrence.containsKey(word)) {

@@ -17,13 +17,13 @@ public class TopFrequencyWordsTest {
 
     private TopFrequencyWords topFrequencyWords;
 
+
     /**
      * This method is setting the word limit in parametrized constructor before invoking test cases
      */
     @Before
     public void init() {
-        final int topWordsLimit = 3;
-        topFrequencyWords = new TopFrequencyWords(topWordsLimit);
+        topFrequencyWords = new TopFrequencyWords();
     }
 
     /**
