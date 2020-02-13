@@ -1,7 +1,7 @@
 package com.mf.techchallenge.utils;
 
 /**
- * Consta
+ * Constants file for project constants
  *
  * @author rajender
  * @created 13/02/2020 - 10:59 PM
