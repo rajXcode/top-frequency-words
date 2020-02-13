@@ -1,2 +1,20 @@
 # top-frequency-words
-Write a function that, given a string of text (possibly with punctuation and line-breaks), returns an array of the top-3 most occurring words, in descending order of the number of occurrences. Assumptions: A word is a string of letters (A to Z) optionally containing one or more apostrophes (’) in ASCII. (No need to handle fancy punctuation.) Matches should be case-insensitive, and the words in the result should be lowercased. Ties may be broken arbitrarily. If a text contains fewer than three unique words, then either the top-2 or top-1 words should be returned, or an empty array if a text contains no words.
+A java program which contains a method to return words in a string text with highest occurrences in descending order.
+
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+ - IntelliJ IDEA 2019+
+ - JDK 1.8
+ 
+Import the project in IntelliJ IDEA and build the project.
+
+## Running the tests
+Right click on the TopFrequencyWordsTest.java file and click on Run 'TopFrequencyWordsTest' and see if all the test cases pass successfully.
+
+## License
+This project is licensed under the GNU GENERAL PUBLIC LICENSE-Version 3 - see the [LICENSE.md](LICENSE.md) file for details
+
+## Authors
+* **Rajender Singh Chauhan**
